@@ -294,7 +294,7 @@ request.setCharacterEncoding("UTF-8");
 					//커서를 상세 주소 입력란으로 이동시킨다.
 					document.getElementById('address_2').focus();
 				}	
-			}).open({
+			}).open({  
 			//우편번호 팝업 창이 여러개 뜨는 것을 방지하기 위해서 작성
 			popupName:  'postcodePopup'
 				
