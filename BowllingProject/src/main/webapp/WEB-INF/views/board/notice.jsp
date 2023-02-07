@@ -115,11 +115,14 @@ request.setCharacterEncoding("UTF-8");
 			<input type = "hidden" name = "keyword" value = "${keyword}"/>
 		</form>
 </div>
-
+ 
 
 	<!-- 하단 메뉴 -->
 	<jsp:include page = "../common/footer.jsp" flush = "false"/>
+	<script>
 	
+	
+	</script>
 	
 </body>
 </html>
