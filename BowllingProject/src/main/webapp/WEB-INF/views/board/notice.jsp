@@ -21,6 +21,9 @@ request.setCharacterEncoding("UTF-8");
 	<div class = "container">
 		<div align = "center">
 			<h2>공지사항 게시판</h2>
+			<br/>
+		</div>
+		<div align = "left">
 			<button class = "btn btn-primary" onclick = "location.href = '/board/boardRegisterForm'">게시글 쓰기</button>
 			<hr/>
 		</div>
@@ -29,11 +32,10 @@ request.setCharacterEncoding("UTF-8");
 			<thead>
 				<tr class = "warning">
 					<th class = "col-sm-1  text-center">번  호</th>
-					<th class = "col-sm-1  text-center">제  목</th>
-					<th class = "col-sm-1  text-center">내  용</th>
+					<th class = "col-sm-4  text-center">제  목</th>
 					<th class = "col-sm-1  text-center">글쓴이</th>
-					<th class = "col-sm-1  text-center">작성일자</th>
-					<th class = "col-sm-1  text-center">조회수</th>
+					<th class = "col-sm-3  text-center">작성일자</th>
+					<th class = "col-sm-1  text-center">조회수</th>				
 				</tr>
 			</thead>
 			<tbody>
@@ -52,11 +54,14 @@ request.setCharacterEncoding("UTF-8");
 				<c:forEach var = "notice" items = "${boardListnotice}">
 				<tr>
 					<td align = "right">${notice.bno}</td>
-					<td><a href = "${contextPath}/board/boardDetail?bno=${notice.bno}&flag=0">${notice.subject}</a></td>
-					<td>${notice.content}</td>
-					<td>${notice.writer}</td>
+					<td align = "center"><a href = "${contextPath}/board/boardDetail?bno=${notice.bno}&flag=0">${notice.subject}</a></td>
+					<td class = "hidden">${notice.content}</td>
+					<td align = "center">${notice.writer}</td>
 					<td><fmt:formatDate value = "${notice.reg_date}" pattern = "yyyy년 MM월 dd일 a hh시 mm분 ss초"/></td>
 					<td align = "right"><fmt:formatNumber value = "${notice.readCount}" pattern = "#,###"/></td>
+					<!-- 나중 사용을 위해서 이미지 이름과 경로 히든 처리 -->
+					<td class = "hidden">${notice.imageName}</td>
+					<td class = "hidden">${notice.imagePath}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -82,7 +87,34 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 		</div>
 	
-	</div>
+		<div class = "" align = "center">
+			<ul class = "btn-group pagination">
+				<c:if test = "${pageMaker.prev}">
+					<li>
+						<a href = '<c:url value = "/board/notice?page=${pageMaker.startPage-1}&searchType=${searchType}&keyword=${keyword}"/>'>
+						<span class = "glyphicon glyhicon-chevron-left"></span></a>
+					</li>
+				</c:if>
+				<c:forEach begin = "${pageMaker.startPage}" end = "${pageMaker.endPage}" var = "pageNum">
+				 	<li>
+				 		<a href = '<c:url value = "/board/notice?page=${pageNum}&searchType=${searchType}&keyword=${keyword}"/>'>
+				 		<i>${pageNum}</i></a>
+				 	</li>
+				 </c:forEach>
+				 <c:if test = "${pageMaker.next}">
+				 	<li>
+				 		<a href = '<c:url value = "/board/notice?page=${pageMaker.endPage+1}&searchType=${searchType}&keyword=${keyword}"/>'>
+				 		<span class = "glyphicon glyphicon-chevron-right"></span></a>
+				 	</li>
+				 </c:if>
+			</ul>
+		</div>
+		
+		<form id = "formList" action = "/board/notice" method = "get">
+			<input type = "hidden" name = "searchType" value = "${searchType}"/>
+			<input type = "hidden" name = "keyword" value = "${keyword}"/>
+		</form>
+</div>
 
 
 	<!-- 하단 메뉴 -->
