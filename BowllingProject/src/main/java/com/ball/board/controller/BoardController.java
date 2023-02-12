@@ -3,6 +3,7 @@ package com.ball.board.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -91,6 +92,36 @@ public class BoardController {
 		
 		return mav;
 	}
+	// 공지게시판 게시글 번호에 해당하는 게시글 상세 조회 - 조회수 증가 비지니스 로직추가
+	@RequestMapping(value = "/boardDetailnotice", method = RequestMethod.GET)
+	public String boardDetail(Model model, HttpServletRequest request) throws Exception {
+		
+		logger.info("boardController에서 공지 게시글 상세조회 시작");
+		
+		//게시글 조회시에만 조회수가 증가할수있게 비지니스 로직을 짜준다.
+		int bno = Integer.parseInt((String) request.getParameter("bno"));
+		int flag = Integer.parseInt((String) request.getParameter("flag"));
+		
+		// 게시글 번호에 해당하는 게시글의 상세내용을 조회해올 수 있게 구현
+		BoardDTOnotice boardDTOnotice = boardService.boardDetailnotice(bno, flag);
+		
+		//응답 경로에 보내줄 데이터 정보 - boardDTOnotice로 받아온 값들
+		model.addAttribute("boardnotice", boardDTOnotice);
+		
+		//응답 경로
+		return "/board/boardDetailnotice";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//게시글 목록보기 - 공지사항(notice) 게시판
 	
