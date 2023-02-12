@@ -119,10 +119,42 @@ request.setCharacterEncoding("UTF-8");
 
 	<!-- 하단 메뉴 -->
 	<jsp:include page = "../common/footer.jsp" flush = "false"/>
-	<script>
 	
+	<!-- 페이징, 검색 처리에 대한 스크립트 구현 -->
+	<script>
+	$(document).ready(function(){
+		
+		var fromObj = $("#fromList");
+		
+		//검색 버튼을 눌렀을 경우
+		$("#searchBtn").click(function({
+			// writer, content, subject값 선택하여 검색시(바 형태의 3가지 옵션중 한가지를 선택하였을때)
+			var typeStr = $("#searchType").find(":selected").val();
+			// 검색의 내용에 대한 변수
+			var keywordStr = $("#searchKeywrod").val();
+			
+			// 검색종류 미지정시 혹은 검색칸을 비운채로 검색시
+			if(typeStr == "검색종류" || typeStr == ""){
+				alert("검색 종류를 미지정하시거나 빈칸으로 검색하시면 안됩니다.");
+				$("searchType").focus();
+				return;
+			}
+			
+			alert(tpyeStr + " : " + keywordStr);
+			
+			//서버로 전송하기 전에, name 속성에 값을 넣어준다.
+			formObj.find("[name='searchType']").val(typeStr);
+			formObj.find("[name='keyword']").val(keywordStr);
+			formObj.find("[name='page']").val("1");
+			//서브밋할 경우 따라갈 값들.
+			formObj.submit();
+			
+			
+		});
+		
+	});
 	
 	</script>
-	
+
 </body>
 </html>
