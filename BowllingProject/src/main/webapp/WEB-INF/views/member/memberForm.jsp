@@ -225,12 +225,6 @@ request.setCharacterEncoding("UTF-8");
 	            $("#name").focus();
 	            return false;
 	        }
-	        
-	        if($("#email").val() == "") {
-	            alert("이메일은 반드시 입력하셔야 합니다.");
-	            $("#email").focus();
-	            return false;
-	        }
 	     	  
 	     	if($('input[name="register_Yn"]:checked').val() != "Y") {
 	     		alert("회원가입 미동의시 회원가입이 어렵습니다.");

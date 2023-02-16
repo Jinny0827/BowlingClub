@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 전체 목록</title>
+<title>회원 전체 목록</title> 
 </head>
 <body>
 	<!-- 회원에 대한 체크(로그인 여부) -->
