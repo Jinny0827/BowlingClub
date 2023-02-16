@@ -9,7 +9,7 @@ request.setCharacterEncoding("UTF-8");
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>로그인 화면</title>
 <!-- 로그인 여부 체크 -->
 <!-- 멤버컨트롤러에서 만들어놓은 여러가지 아이디실패 경우의수 -->

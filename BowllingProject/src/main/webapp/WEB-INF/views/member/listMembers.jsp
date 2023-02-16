@@ -6,7 +6,7 @@
 <!-- 대표 경로 설정 -->
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
