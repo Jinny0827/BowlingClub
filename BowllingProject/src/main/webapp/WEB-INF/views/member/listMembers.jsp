@@ -74,7 +74,7 @@
 			location.href = "/member/removeMember.do?id=" + id;
 		}
 		
-		
+		 
 	}
 	</script>
 	
