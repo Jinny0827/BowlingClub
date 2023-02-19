@@ -18,8 +18,14 @@ public interface BoardDAO {
 	public List<BoardDTOnotice> boardListnotice(SearchCriteria sCri) throws Exception;
 	
 	// 게시글 조회수 증가에 대한 로직 - 공지게시판
-	public void updateReadCountNotice(int bno);
+	public void updateReadCountNotice(int bno) throws Exception;
 	
 	//게시글번호에 해당하는 게시글 상세 조회 - 공지 게시판
-	public BoardDTOnotice boardDetailnotice(int bno, int flag);
+	public BoardDTOnotice boardDetailnotice(int bno, int flag) throws Exception;
+
+	//게시글 번호에 해당하는 게시글 수정 - 공지 게시판
+	public int boardUpdatenotice(BoardDTOnotice boardDTOnotice) throws Exception;
+
+	//게시글 번호에 해당하는 게시글 삭제 - 공지 게시판
+	public int boardDeletenotice(int bno) throws Exception;
 }

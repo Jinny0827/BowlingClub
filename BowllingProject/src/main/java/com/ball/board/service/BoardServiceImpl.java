@@ -70,5 +70,22 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.boardDetailnotice(bno, flag);
 	}
 	  
+	  // 게시글 번호에 해당하는 게시글 수정 - 공지 게시판
+	  @Override
+	public int boardUpdatenotice(BoardDTOnotice boardDTOnotice) throws Exception {
+		  
+		  logger.info("boardServiceImpl에서 게시글에 해당하는 공지게시판 게시글 수정 시작");
+		
+		  return boardDAO.boardUpdatenotice(boardDTOnotice);
+	}
+	//게시글 번호에 해당하는 게시글 삭제 - 공지 게시판
+	@Override
+	public int boardDeletenotice(int bno) throws Exception {
+		
+		logger.info("boardServiceImpl에서 공지게시판 게시글 삭제하기 시작");
+		
+		return boardDAO.boardDeletenotice(bno);
+	}
+	  
 }
 

@@ -75,4 +75,20 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.selectOne(Namespace + ".boardDetailnotice", bno);
 	}
+	// 게시글 번호에 해당하는 게시글 수정 - 공지 게시판
+	@Override
+	public int boardUpdatenotice(BoardDTOnotice boardDTOnotice) throws Exception {
+		
+		logger.info("BoardDAOImpl에서 게시글에 해당하는 공지게시판 게시글 수정 시작");
+		
+		return sqlSession.update(Namespace + ".boardUpdatenotice", boardDTOnotice);
+	}
+	// 게시글 번호에 해당하는 게시글 삭제 - 공지 게시판
+	@Override
+	public int boardDeletenotice(int bno) throws Exception {
+		
+		logger.info("BoardDAOImpl에서 게시글에 해당하는 공지 게시판 게시글 삭제");
+		
+		return sqlSession.delete(Namespace + ".boardDeletenotice", bno);
+	}
 }
